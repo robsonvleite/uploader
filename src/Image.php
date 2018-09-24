@@ -21,20 +21,17 @@ class Image extends Uploader
         "image/gif",
     ];
 
-    /** @var int JPG quality */
-    private static $quality = 75;
 
     /**
-     * Send an image from a form
-     *
      * @param array $image
      * @param string $name
-     * @param int $width [px]
-     * @return null|string [file path]
-     * @example $imageSrc = $u->upload($_FILES['image'], "myimagename", 920); var_dump($imageSrc);
+     * @param int $width
+     * @param int $jQuality Image JPG quality 1 to 100
+     * @param int $pQuality Image PNG compressor 0 to 9
+     * @return string
      * @throws \Exception
      */
-    public function upload(array $image, string $name, int $width = 2000): string
+    public function upload(array $image, string $name, int $width = 2000, int $jQuality = 75, int $pQuality = 5): string
     {
         if (empty($image['type'])) {
             throw new \Exception("Not a valid data from image");
@@ -58,14 +55,14 @@ class Image extends Uploader
 
         if ($this->ext == "jpg") {
             imagecopyresampled($imageCreate, $this->file, 0, 0, 0, 0, $imageW, $imageH, $fileX, $fileY);
-            imagejpeg($imageCreate, "{$this->path}/{$this->name}", static::$quality);
+            imagejpeg($imageCreate, "{$this->path}/{$this->name}", $jQuality);
         }
 
         if ($this->ext == "png") {
             imagealphablending($imageCreate, false);
             imagesavealpha($imageCreate, true);
             imagecopyresampled($imageCreate, $this->file, 0, 0, 0, 0, $imageW, $imageH, $fileX, $fileY);
-            imagepng($imageCreate, "{$this->path}/{$this->name}");
+            imagepng($imageCreate, "{$this->path}/{$this->name}", $pQuality);
         }
 
         imagedestroy($this->file);
