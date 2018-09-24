@@ -1,12 +1,12 @@
 # Uploader
 
 [![Maintainer](http://img.shields.io/badge/maintainer-@robsonvleite-blue.svg?style=flat-square)](https://twitter.com/robsonvleite)
-[![Source Code](http://img.shields.io/badge/source-Coffeecode/uploader-blue.svg?style=flat-square)](https://github.com/robsonvleite/uploader)
+[![Source Code](http://img.shields.io/badge/source-coffeecode/uploader-blue.svg?style=flat-square)](https://github.com/robsonvleite/uploader)
 [![Latest Version](https://img.shields.io/github/release/robsonvleite/uploader.svg?style=flat-square)](https://github.com/robsonvleite/uploader/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 [![Build Status](https://scrutinizer-ci.com/g/robsonvleite/uploader/badges/build.png?b=master)](https://scrutinizer-ci.com/g/robsonvleite/uploader/build-status/master)
 [![Quality Score](https://img.shields.io/scrutinizer/g/robsonvleite/uploader.svg?style=flat-square)](https://scrutinizer-ci.com/g/robsonvleite/uploader)
-[![Total Downloads](https://img.shields.io/packagist/dt/Coffeecode/uploader.svg?style=flat-square)](https://packagist.org/packages/Coffeecode/uploader)
+[![Total Downloads](https://img.shields.io/packagist/dt/coffeecode/uploader.svg?style=flat-square)](https://packagist.org/packages/coffeecode/uploader)
 
 ###### Uploader is a set of small classes for sending images, files and media received by a form of your application. The Uploader handles, validates and sends the files to your server. Image class can still handle sizes with the gd library.
 
@@ -36,13 +36,13 @@ CoffeeCode é um conjunto de pequenos e otimizados componentes PHP para tarefas 
 Uploader is available via Composer:
 
 ```bash
-"Coffeecode/uploader": "~1.0"
+"coffeecode/uploader": "~1.0"
 ```
 
 or run
 
 ```bash
-composer require Coffeecode/uploader
+composer require coffeecode/uploader
 ```
 
 ## Documentation
