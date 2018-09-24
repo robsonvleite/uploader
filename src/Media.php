@@ -11,11 +11,13 @@ namespace CoffeeCode\Uploader;
 class Media extends Uploader
 {
     /**
+     * Allow mp4 video and mp3 audio
+     *
      * @var array allowed media types
      */
     protected static $allowTypes = [
         "audio/mp3",
-        "video/mp4"
+        "video/mp4",
     ];
 
     /**

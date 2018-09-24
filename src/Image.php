@@ -10,6 +10,17 @@ namespace CoffeeCode\Uploader;
  */
 class Image extends Uploader
 {
+    /**
+     * Allow jpg, png and gif images, use from check. For new extensions check the imageCrete method
+     *
+     * @var array allowed media types
+     */
+    protected static $allowTypes = [
+        "image/jpeg",
+        "image/png",
+        "image/gif",
+    ];
+
     /** @var int JPG quality */
     private static $quality = 75;
 

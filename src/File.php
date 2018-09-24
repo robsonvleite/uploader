@@ -11,6 +11,8 @@ namespace CoffeeCode\Uploader;
 class File extends Uploader
 {
     /**
+     * Allow pdf, zip, rar, bzip, docx files
+     *
      * @var array allowed file types
      */
     protected static $allowTypes = [
