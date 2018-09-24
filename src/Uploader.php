@@ -36,6 +36,16 @@ abstract class Uploader
     }
 
     /**
+     * Use to check allowed file types
+     *
+     * @return array
+     */
+    public static function isAllowed(): array
+    {
+        return static::$allowTypes;
+    }
+
+    /**
      * Name slug with extension
      *
      * @param string $name
