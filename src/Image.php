@@ -21,17 +21,15 @@ class Image extends Uploader
         "image/gif",
     ];
 
-
     /**
      * @param array $image
      * @param string $name
      * @param int $width
-     * @param int $jQuality Image JPG quality 1 to 100
-     * @param int $pQuality Image PNG compressor 0 to 9
+     * @param array $q = ['jpg' => 0-100 quality, 'png' => 0-9 compressor]
      * @return string
      * @throws \Exception
      */
-    public function upload(array $image, string $name, int $width = 2000, int $jQuality = 75, int $pQuality = 5): string
+    public function upload(array $image, string $name, int $width = 2000, array $q = ["jpg" => 75, "png" => 5]): string
     {
         if (empty($image['type'])) {
             throw new \Exception("Not a valid data from image");
@@ -55,14 +53,14 @@ class Image extends Uploader
 
         if ($this->ext == "jpg") {
             imagecopyresampled($imageCreate, $this->file, 0, 0, 0, 0, $imageW, $imageH, $fileX, $fileY);
-            imagejpeg($imageCreate, "{$this->path}/{$this->name}", $jQuality);
+            imagejpeg($imageCreate, "{$this->path}/{$this->name}", $q['jpg']);
         }
 
         if ($this->ext == "png") {
             imagealphablending($imageCreate, false);
             imagesavealpha($imageCreate, true);
             imagecopyresampled($imageCreate, $this->file, 0, 0, 0, 0, $imageW, $imageH, $fileX, $fileY);
-            imagepng($imageCreate, "{$this->path}/{$this->name}", $pQuality);
+            imagepng($imageCreate, "{$this->path}/{$this->name}", $q['png']);
         }
 
         imagedestroy($this->file);
