@@ -7,7 +7,6 @@
         require __DIR__ . "/../src/File.php";
 
         $file = new CoffeeCode\Uploader\File("uploads", "files");
-        //$file->remove("uploads/files/2018/09/test.zip");
 
         if ($_FILES) {
             $upload = $file->upload($_FILES['file'], $_POST['name']);

@@ -7,7 +7,6 @@
         require __DIR__ . "/../src/Image.php";
 
         $image = new CoffeeCode\Uploader\Image("uploads", "images");
-        //$image->remove("uploads/images/2018/09/test.gif");
 
         if ($_FILES) {
             $upload = $image->upload($_FILES['image'], $_POST['name']);

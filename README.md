@@ -27,7 +27,6 @@ CoffeeCode é um conjunto de pequenos e otimizados componentes PHP para tarefas 
 - Media simple uoload (Sinples envio de midias)
 - Managing directories with date schemas (Gestão de diretórios com esquema de datas)
 - Validation of images, files and media by mime-types (Validation of images, files and media by mime-types)
-- Simple remove files (Simples remoção de arquivos)
 - Composer ready and PSR-2 compliant (Pronto para o composer e compatível com PSR-2)
 
 
@@ -64,9 +63,6 @@ if ($_FILES) {
     $upload = $image->upload($_FILES['image'], $_POST['name']);
     echo "<img src='{$upload}' width='100%'>";
 }
-
-//to remove
-$image->remove("uploads/images/2018/09/test.gif");
 ```
 
 
@@ -83,9 +79,6 @@ if ($_FILES) {
     $upload = $file->upload($_FILES['file'], $_POST['name']);
     echo "<p><a href='{$upload}' target='_blank'>Go</a></p>";
 }
-
-//to remove
-$file->remove("uploads/files/2018/09/test.zip");
 ```
 
 #### Uploade Media:
@@ -101,9 +94,6 @@ if ($_FILES) {
     $upload = $media->upload($_FILES['file'], $_POST['name']);
     echo "<p><a href='{$upload}' target='_blank'>Acessar arquivo</a></p>";
 }
-
-//to remove
-$media->remove("uploads/medias/2018/09/test.mp4");
 ```
 
 ## Contributing

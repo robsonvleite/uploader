@@ -93,20 +93,4 @@ abstract class Uploader
         $this->dir("{$path}/{$yearPath}/{$mothPath}");
         $this->path = "{$path}/{$yearPath}/{$mothPath}";
     }
-
-    /**
-     * Remove file if exists
-     *
-     * @param string $filePath
-     */
-    public function remove(string $filePath): void
-    {
-        if (file_exists($filePath) && is_file($filePath)) {
-            unlink($filePath);
-        }
-
-        if (file_exists("{$this->path}/{$filePath}") && is_file("{$this->path}/{$filePath}")) {
-            unlink("{$this->path}/{$filePath}");
-        }
-    }
 }
