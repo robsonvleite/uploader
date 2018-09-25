@@ -12,23 +12,20 @@
 
 Uploader é um conjunto de pequenas classes para envio de imagens, arquivos e midias recebidos por um formulário de sua aplicação. O Uploader trata, valida e envia os arquivos a seu servidor. A classe de imagem ainda consegue tratar tamanhos com a biblioteca gd.
 
-
 ## About CoffeeCode
 
 ###### CoffeeCode is a set of small and optimized PHP components for common tasks. Held by Robson V. Leite and the UpInside team. With them you perform routine tasks with fewer lines, writing less and doing much more.
 
 CoffeeCode é um conjunto de pequenos e otimizados componentes PHP para tarefas comuns. Mantido por Robson V. Leite e a equipe UpInside. Com eles você executa tarefas rotineiras com poucas linhas, escrevendo menos e fazendo muito mais.
 
-
 ### Highlights
 
 - Image simple upload (Simples envio de imagems)
 - File simple upload (Simples envio de arquivos)
-- Media simple uoload (Sinples envio de midias)
+- Media simple upload (Simples envio de midias)
 - Managing directories with date schemas (Gestão de diretórios com esquema de datas)
 - Validation of images, files and media by mime-types (Validation of images, files and media by mime-types)
 - Composer ready and PSR-2 compliant (Pronto para o composer e compatível com PSR-2)
-
 
 ## Installation
 
@@ -64,7 +61,6 @@ if ($_FILES) {
     echo "<img src='{$upload}' width='100%'>";
 }
 ```
-
 
 #### Upload an File
 
@@ -113,7 +109,6 @@ Thank you
 - [Robson V. Leite](https://github.com/robsonvleite) (Developer)
 - [UpInside Treinamentos](https://github.com/upinside) (Team)
 - [All Contributors](https://github.com/robsonvleite/uploader/contributors) (This Rock)
-
 
 ## License
 
