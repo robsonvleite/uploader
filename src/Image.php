@@ -22,6 +22,8 @@ class Image extends Uploader
     ];
 
     /**
+     * Send an image from a form
+     *
      * @param array $image
      * @param string $name
      * @param int $width

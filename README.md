@@ -1,4 +1,4 @@
-# Uploader
+# Uploader @CoffeeCode
 
 [![Maintainer](http://img.shields.io/badge/maintainer-@robsonvleite-blue.svg?style=flat-square)](https://twitter.com/robsonvleite)
 [![Source Code](http://img.shields.io/badge/source-coffeecode/uploader-blue.svg?style=flat-square)](https://github.com/robsonvleite/uploader)

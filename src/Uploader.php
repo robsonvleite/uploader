@@ -23,7 +23,6 @@ abstract class Uploader
     protected $ext;
 
     /**
-     * Uploader constructor.
      * @param string $uploadDir
      * @param string $fileTypeDir
      * @example $u = new Upload("storage/uploads", "images");
