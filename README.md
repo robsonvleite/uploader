@@ -50,7 +50,7 @@ composer require coffeecode/uploader
 
 Para mais detalhes sobre como usar o upload, veja uma pasta de exemplo no diretório do componente. Nela terá um exemplo de uso para cada classe. CoffeeCode Uploader funciona assim:
 
-#### Uploade Image
+#### Upload an Image
 
 ```php
 <?php
@@ -66,7 +66,7 @@ if ($_FILES) {
 ```
 
 
-#### Uploade File
+#### Upload an File
 
 ```php
 <?php
@@ -81,7 +81,7 @@ if ($_FILES) {
 }
 ```
 
-#### Uploade Media
+#### Upload an Media
 
 ```php
 <?php
