@@ -2,9 +2,10 @@
 
 [![Maintainer](http://img.shields.io/badge/maintainer-@robsonvleite-blue.svg?style=flat-square)](https://twitter.com/robsonvleite)
 [![Source Code](http://img.shields.io/badge/source-coffeecode/uploader-blue.svg?style=flat-square)](https://github.com/robsonvleite/uploader)
+[![PHP from Packagist](https://img.shields.io/packagist/php-v/coffeecode/uploader.svg?style=flat-square)](https://packagist.org/packages/coffeecode/uploader)
 [![Latest Version](https://img.shields.io/github/release/robsonvleite/uploader.svg?style=flat-square)](https://github.com/robsonvleite/uploader/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
-[![Build Status](https://scrutinizer-ci.com/g/robsonvleite/uploader/badges/build.png?b=master&style=flat-square)](https://scrutinizer-ci.com/g/robsonvleite/uploader/build-status/master)
+[![Build](https://img.shields.io/scrutinizer/build/g/robsonvleite/uploader.svg?style=flat-square)](https://scrutinizer-ci.com/g/robsonvleite/uploader)
 [![Quality Score](https://img.shields.io/scrutinizer/g/robsonvleite/uploader.svg?style=flat-square)](https://scrutinizer-ci.com/g/robsonvleite/uploader)
 [![Total Downloads](https://img.shields.io/packagist/dt/coffeecode/uploader.svg?style=flat-square)](https://packagist.org/packages/coffeecode/uploader)
 
