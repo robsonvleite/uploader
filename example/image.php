@@ -7,10 +7,14 @@
         require __DIR__ . "/../src/Image.php";
 
         $image = new CoffeeCode\Uploader\Image("uploads", "images");
-
+        
         if ($_FILES) {
-            $upload = $image->upload($_FILES['image'], $_POST['name']);
-            echo "<img src='{$upload}' width='100%'>";
+            try {
+                $upload = $image->upload($_FILES['image'], $_POST['name']);
+                echo "<img src='{$upload}' width='100%'>";
+            } catch (Exception $e) {
+                echo "<p>(!) {$e->getMessage()}</p>";
+            }
         }
         ?>
         <input type="text" name="name" placeholder="Image Name" required/>

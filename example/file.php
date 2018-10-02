@@ -9,8 +9,12 @@
         $file = new CoffeeCode\Uploader\File("uploads", "files");
 
         if ($_FILES) {
-            $upload = $file->upload($_FILES['file'], $_POST['name']);
-            echo "<p><a href='{$upload}' target='_blank'>Acessar arquivo</a></p>";
+            try {
+                $upload = $file->upload($_FILES['file'], $_POST['name']);
+                echo "<p><a href='{$upload}' target='_blank'>@CoffeeCode</a></p>";
+            } catch (Exception $e) {
+                echo "<p>(!) {$e->getMessage()}</p>";
+            }
         }
         ?>
         <input type="text" name="name" placeholder="File Name" required/>

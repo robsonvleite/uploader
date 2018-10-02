@@ -38,7 +38,7 @@ class Image extends Uploader
         }
 
         if (!$this->imageCreate($image)) {
-            throw new \Exception("{$image['type']} - Not a valid file type");
+            throw new \Exception("{$image['type']} - Not a valid image type");
         } else {
             $this->name($name);
         }

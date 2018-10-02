@@ -1,18 +1,17 @@
 <?php
+
+namespace CoffeeCode\Uploader;
+
 /**
  * Class CoffeeCode Document
  *
  * @author Tiago Chini <https://github.com/tiagochini>
  * @package CoffeeCode\Uploader
  */
-
-namespace CoffeeCode\Uploader;
-
-
-class Document
+class Document extends Uploader
 {
     /**
-     * Allow pdf, docx, tfm, tex, sxc, odt, odp, doc, xls, xlsm, ppt, pptm files
+     * Allow pdf, docx, tfm, tex, sxc, odt, odp, doc, xls, xlsm, ppt, pptm documents
      *
      * @var array allowed file types
      */
@@ -46,7 +45,7 @@ class Document
     public function upload(array $document, string $name): string
     {
         if (!in_array($document['type'], static::$allowTypes)) {
-            throw new \Exception("{$document['type']} - Not a valid file type");
+            throw new \Exception("{$document['type']} - Not a valid document type");
         } else {
             $this->ext = mb_strtolower(pathinfo($document['name'])['extension']);
             $this->name($name);
