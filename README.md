@@ -86,7 +86,7 @@ if ($_FILES) {
 require __DIR__ . "/../src/Uploader.php";
 require __DIR__ . "/../src/Document.php";
 
-$document = new CoffeeCode\Uploader\Document("uploads", "files");
+$document = new CoffeeCode\Uploader\Document("uploads", "documents");
 
 if ($_FILES) {
     $upload = $document->upload($_FILES['file'], $_POST['name']);
