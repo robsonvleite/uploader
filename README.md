@@ -25,7 +25,7 @@ CoffeeCode é um conjunto de pequenos e otimizados componentes PHP para tarefas 
 - Document simple upload (Simples envio de documentos)
 - Media simple upload (Simples envio de midias)
 - Managing directories with date schemas (Gestão de diretórios com esquema de datas)
-- Validation of images, files, documents and media by mime-types (Valida de imagens, arquivos, documentos e mídia por tipos mime)
+- Validation of images, files, documents and media by mime-types (Valida de imagens, arquivos, documentos e mídia por mime-types)
 - Composer ready and PSR-2 compliant (Pronto para o composer e compatível com PSR-2)
 
 ## Installation
