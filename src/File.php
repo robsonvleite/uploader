@@ -19,6 +19,9 @@ class File extends Uploader
         "application/zip",
         'application/x-rar-compressed',
         'application/x-bzip',
+        "application/msword",
+        "application/pdf",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
     ];
 
     /**

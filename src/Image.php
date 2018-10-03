@@ -93,10 +93,10 @@ class Image extends Uploader
         }
 
         if ($image['type'] == "image/gif") {
-            $this->file = $image;
             $this->ext = "gif";
             return true;
         }
+
         return false;
     }
 }

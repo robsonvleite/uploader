@@ -9,9 +9,9 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/robsonvleite/uploader.svg?style=flat-square)](https://scrutinizer-ci.com/g/robsonvleite/uploader)
 [![Total Downloads](https://img.shields.io/packagist/dt/coffeecode/uploader.svg?style=flat-square)](https://packagist.org/packages/coffeecode/uploader)
 
-###### Uploader is a set of small classes for sending images, files, documents and media received by a form of your application. The Uploader handles, validates and sends the files to your server. Image class can still handle sizes with the gd library.
+###### Uploader is a set of small classes for sending images, files, and media received by a form of your application. The Uploader handles, validates and sends the files to your server. Image class can still handle sizes with the gd library.
 
-Uploader é um conjunto de pequenas classes para envio de imagens, arquivos, documentos e midias recebidos por um formulário de sua aplicação. O Uploader trata, valida e envia os arquivos a seu servidor. A classe de imagem ainda consegue tratar tamanhos com a biblioteca gd.
+Uploader é um conjunto de pequenas classes para envio de imagens, arquivos e midias recebidos por um formulário de sua aplicação. O Uploader trata, valida e envia os arquivos a seu servidor. A classe de imagem ainda consegue tratar tamanhos com a biblioteca gd.
 
 ## About CoffeeCode
 
@@ -23,10 +23,9 @@ CoffeeCode é um conjunto de pequenos e otimizados componentes PHP para tarefas 
 
 - Image simple upload (Simples envio de imagems)
 - File simple upload (Simples envio de arquivos)
-- Document simple upload (Simples envio de documentos)
 - Media simple upload (Simples envio de midias)
 - Managing directories with date schemas (Gestão de diretórios com esquema de datas)
-- Validation of images, files, documents and media by mime-types (Valida de imagens, arquivos, documentos e mídia por mime-types)
+- Validation of images, files and media by mime-types (Valida de imagens, arquivos e mídias por mime-types)
 - Composer ready and PSR-2 compliant (Pronto para o composer e compatível com PSR-2)
 
 ## Installation
@@ -75,21 +74,6 @@ $file = new CoffeeCode\Uploader\File("uploads", "files");
 
 if ($_FILES) {
     $upload = $file->upload($_FILES['file'], $_POST['name']);
-    echo "<p><a href='{$upload}' target='_blank'>Go</a></p>";
-}
-```
-
-#### Upload an Document
-
-```php
-<?php
-require __DIR__ . "/../src/Uploader.php";
-require __DIR__ . "/../src/Document.php";
-
-$document = new CoffeeCode\Uploader\Document("uploads", "documents");
-
-if ($_FILES) {
-    $upload = $document->upload($_FILES['file'], $_POST['name']);
     echo "<p><a href='{$upload}' target='_blank'>Go</a></p>";
 }
 ```
