@@ -1,14 +1,13 @@
 {
   "name": "coffeecode/uploader",
-  "description": "It is a easy PHP upload manager for images, files, documents and media in your application",
+  "description": "It is a easy PHP upload manager for images, files and media in your application",
   "keywords": [
     "CoffeeCode",
     "UpInside",
     "upload",
     "image upload",
     "file upload",
-    "media upload",
-    "document upload"
+    "media upload"
   ],
   "homepage": "http://www.upinside.com.br",
   "license": "MIT",
