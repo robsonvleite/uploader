@@ -11,22 +11,19 @@ namespace CoffeeCode\Uploader;
 class File extends Uploader
 {
     /**
-     * Allow zip, rar, bzip files
-     *
+     * Allow zip, rar, bzip, pdf, doc, docx files
      * @var array allowed file types
      */
     protected static $allowTypes = [
         "application/zip",
         'application/x-rar-compressed',
         'application/x-bzip',
-        "application/msword",
         "application/pdf",
+        "application/msword",
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
     ];
 
     /**
-     * Send an file from a form
-     *
      * @param array $file
      * @param string $name
      * @return null|string

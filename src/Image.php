@@ -12,7 +12,6 @@ class Image extends Uploader
 {
     /**
      * Allow jpg, png and gif images, use from check. For new extensions check the imageCrete method
-     *
      * @var array allowed media types
      */
     protected static $allowTypes = [
@@ -21,7 +20,14 @@ class Image extends Uploader
         "image/gif",
     ];
 
-
+    /**
+     * @param array $image
+     * @param string $name
+     * @param int $width
+     * @param array|null $quality
+     * @return string
+     * @throws \Exception
+     */
     public function upload(array $image, string $name, int $width = 2000, ?array $quality = null): string
     {
         if (empty($image['type'])) {

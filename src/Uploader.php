@@ -38,8 +38,6 @@ abstract class Uploader
     }
 
     /**
-     * Use to check allowed file types
-     *
      * @return array
      */
     public static function isAllowed(): array
@@ -48,8 +46,6 @@ abstract class Uploader
     }
 
     /**
-     * Name slug with extension
-     *
      * @param string $name
      * @return string
      */
@@ -70,8 +66,6 @@ abstract class Uploader
     }
 
     /**
-     * Directory scan and create
-     *
      * @param string $dir
      * @param int $mode
      */
@@ -83,8 +77,6 @@ abstract class Uploader
     }
 
     /**
-     * Create path year and month based
-     *
      * @param string $path
      */
     protected function path(string $path): void

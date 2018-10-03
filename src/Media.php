@@ -12,7 +12,6 @@ class Media extends Uploader
 {
     /**
      * Allow mp4 video and mp3 audio
-     *
      * @var array allowed media types
      */
     protected static $allowTypes = [
@@ -21,8 +20,6 @@ class Media extends Uploader
     ];
 
     /**
-     * Send an media from a form
-     *
      * @param array $media
      * @param string $name
      * @return null|string
