@@ -23,12 +23,12 @@ class Media extends Uploader
     /**
      * Send an media from a form
      *
-     * @param resource $media
+     * @param array $media
      * @param string $name
      * @return null|string
      * @throws \Exception
      */
-    public function upload($media, string $name): string
+    public function upload(array $media, string $name): string
     {
         if (!in_array($media['type'], static::$allowTypes)) {
             throw new \Exception("{$media['type']} - Not a valid media type");
