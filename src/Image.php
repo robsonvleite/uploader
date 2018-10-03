@@ -21,17 +21,8 @@ class Image extends Uploader
         "image/gif",
     ];
 
-    /**
-     * Send an image from a form
-     *
-     * @param array $image
-     * @param string $name
-     * @param int $width
-     * @param array $q = ['jpg' => 0-100 quality, 'png' => 0-9 compressor]
-     * @return string
-     * @throws \Exception
-     */
-    public function upload(array $image, string $name, int $width = 2000, array $q = ["jpg" => 75, "png" => 5]): string
+
+    public function upload(array $image, string $name, int $width = 2000, ?array $quality = null): string
     {
         if (empty($image['type'])) {
             throw new \Exception("Not a valid data from image");
@@ -43,10 +34,21 @@ class Image extends Uploader
             $this->name($name);
         }
 
-        if ($this->ext == "gif" && move_uploaded_file("{$image['tmp_name']}", "{$this->path}/{$this->name}")) {
+        if ($this->ext == "gif") {
+            move_uploaded_file("{$image['tmp_name']}", "{$this->path}/{$this->name}");
             return "{$this->path}/{$this->name}";
         }
 
+        $this->imageGenerate($width, ($quality ?? ["jpg" => 75, "png" => 5]));
+        return "{$this->path}/{$this->name}";
+    }
+
+    /**
+     * @param int $width
+     * @param array $quality
+     */
+    private function imageGenerate(int $width, array $quality)
+    {
         $fileX = imagesx($this->file);
         $fileY = imagesy($this->file);
         $imageW = ($width < $fileX ? $width : $fileX);
@@ -55,20 +57,18 @@ class Image extends Uploader
 
         if ($this->ext == "jpg") {
             imagecopyresampled($imageCreate, $this->file, 0, 0, 0, 0, $imageW, $imageH, $fileX, $fileY);
-            imagejpeg($imageCreate, "{$this->path}/{$this->name}", $q['jpg']);
+            imagejpeg($imageCreate, "{$this->path}/{$this->name}", $quality['jpg']);
         }
 
         if ($this->ext == "png") {
             imagealphablending($imageCreate, false);
             imagesavealpha($imageCreate, true);
             imagecopyresampled($imageCreate, $this->file, 0, 0, 0, 0, $imageW, $imageH, $fileX, $fileY);
-            imagepng($imageCreate, "{$this->path}/{$this->name}", $q['png']);
+            imagepng($imageCreate, "{$this->path}/{$this->name}", $quality['png']);
         }
 
         imagedestroy($this->file);
         imagedestroy($imageCreate);
-
-        return "{$this->path}/{$this->name}";
     }
 
     /**
