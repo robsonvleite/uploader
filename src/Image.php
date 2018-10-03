@@ -24,14 +24,14 @@ class Image extends Uploader
     /**
      * Send an image from a form
      *
-     * @param array $image
+     * @param resource $image
      * @param string $name
      * @param int $width
      * @param array $q = ['jpg' => 0-100 quality, 'png' => 0-9 compressor]
      * @return string
      * @throws \Exception
      */
-    public function upload(array $image, string $name, int $width = 2000, array $q = ["jpg" => 75, "png" => 5]): string
+    public function upload($image, string $name, int $width = 2000, array $q = ["jpg" => 75, "png" => 5]): string
     {
         if (empty($image['type'])) {
             throw new \Exception("Not a valid data from image");

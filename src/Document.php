@@ -37,12 +37,12 @@ class Document extends Uploader
     /**
      * Send an document from a form
      *
-     * @param array $document
+     * @param resource $document
      * @param string $name
      * @return null|string
      * @throws \Exception
      */
-    public function upload(array $document, string $name): string
+    public function upload($document, string $name): string
     {
         if (!in_array($document['type'], static::$allowTypes)) {
             throw new \Exception("{$document['type']} - Not a valid document type");

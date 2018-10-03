@@ -24,12 +24,12 @@ class File extends Uploader
     /**
      * Send an file from a form
      *
-     * @param array $file
+     * @param resource $file
      * @param string $name
      * @return null|string
      * @throws \Exception
      */
-    public function upload(array $file, string $name): string
+    public function upload($file, string $name): string
     {
         if (!in_array($file['type'], static::$allowTypes)) {
             throw new \Exception("{$file['type']} - Not a valid file type");

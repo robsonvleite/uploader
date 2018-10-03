@@ -22,6 +22,9 @@ abstract class Uploader
     /** @var string */
     protected $ext;
 
+    /** @var array */
+    protected static $allowTypes = [];
+
     /**
      * @param string $uploadDir
      * @param string $fileTypeDir
