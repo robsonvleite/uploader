@@ -13,7 +13,7 @@ abstract class Uploader
     /** @var string */
     protected $path;
 
-    /** @var string */
+    /** @var resource */
     protected $file;
 
     /** @var string */
