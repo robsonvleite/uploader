@@ -52,14 +52,17 @@ Para mais detalhes sobre como usar o upload, veja uma pasta de exemplo no diret√
 
 ```php
 <?php
-require __DIR__ . "/../src/Uploader.php";
-require __DIR__ . "/../src/Image.php";
+require __DIR__ . "/../vendor/autoload.php";
 
-$image = new CoffeeCode\Uploader\Image("uploads", "images");
+$image = new CoffeeCode\Uploader\Image("uploads", "images", 600);
 
 if ($_FILES) {
-    $upload = $image->upload($_FILES['image'], $_POST['name']);
-    echo "<img src='{$upload}' width='100%'>";
+    try {
+        $upload = $image->upload($_FILES['image'], $_POST['name']);
+        echo "<img src='{$upload}' width='100%'>";
+    } catch (Exception $e) {
+        echo "<p>(!) {$e->getMessage()}</p>";
+    }
 }
 ```
 
@@ -67,14 +70,17 @@ if ($_FILES) {
 
 ```php
 <?php
-require __DIR__ . "/../src/Uploader.php";
-require __DIR__ . "/../src/File.php";
+require __DIR__ . "/../vendor/autoload.php";
 
 $file = new CoffeeCode\Uploader\File("uploads", "files");
 
 if ($_FILES) {
-    $upload = $file->upload($_FILES['file'], $_POST['name']);
-    echo "<p><a href='{$upload}' target='_blank'>Go</a></p>";
+    try {
+        $upload = $file->upload($_FILES['file'], $_POST['name']);
+        echo "<p><a href='{$upload}' target='_blank'>@CoffeeCode</a></p>";
+    } catch (Exception $e) {
+        echo "<p>(!) {$e->getMessage()}</p>";
+    }
 }
 ```
 
@@ -82,14 +88,35 @@ if ($_FILES) {
 
 ```php
 <?php
-require __DIR__ . "/../src/Uploader.php";
-require __DIR__ . "/../src/Media.php";
+require __DIR__ . "/../vendor/autoload.php";
 
 $media = new CoffeeCode\Uploader\Media("uploads", "medias");
 
 if ($_FILES) {
-    $upload = $media->upload($_FILES['file'], $_POST['name']);
-    echo "<p><a href='{$upload}' target='_blank'>Acessar arquivo</a></p>";
+    try {
+        $upload = $media->upload($_FILES['file'], $_POST['name']);
+        echo "<p><a href='{$upload}' target='_blank'>@CoffeeCode</a></p>";
+    } catch (Exception $e) {
+        echo "<p>(!) {$e->getMessage()}</p>";
+    }
+}
+```
+
+#### Upload by Filetype (Send)
+
+```php
+<?php
+require __DIR__ . "/../vendor/autoload.php";
+
+$postscript = new CoffeeCode\Uploader\Send("uploads", "postscript", ["application/postscript"]);
+
+if ($_FILES) {
+    try {
+        $upload = $postscript->upload($_FILES['file'], $_POST['name']);
+        echo "<p><a href='{$upload}' target='_blank'>@CoffeeCode</a></p>";
+    } catch (Exception $e) {
+        echo "<p>(!) {$e->getMessage()}</p>";
+    }
 }
 ```
 
