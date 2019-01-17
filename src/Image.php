@@ -89,6 +89,8 @@ class Image extends Uploader
         if ($image['type'] == "image/jpeg") {
             $this->file = imagecreatefromjpeg($image['tmp_name']);
             $this->ext = "jpg";
+            $this->jpegRotate($image);
+
             return true;
         }
 
@@ -105,4 +107,36 @@ class Image extends Uploader
 
         return false;
     }
+
+
+    /**
+     * Image rotation when needed
+     * Detects EXIF metadata for rotated images and convert them to keep the defined rotation
+     *
+     * @param array $image
+     * @return bool
+     */
+    protected function jpegRotate($image)
+    {
+        $exif = exif_read_data($image['tmp_name']);
+        if (!empty($exif['Orientation'])) {
+            $angle = 0;
+            switch ($exif['Orientation']) {
+                case 3:
+                    $angle = 180;
+                    break;
+                case 6:
+                    $angle = -90;
+                    break;
+                case 8:
+                    $angle = 90;
+                    break;
+            }
+            $this->file = imagerotate($this->file, $angle, 0);
+            return true;
+        } else {
+            throw new \Exception("Failed reading JPEG EXIF Data!");
+        }
+    }
+
 }
