@@ -53,7 +53,7 @@ class Image extends Uploader
      * @param int $width
      * @param array $quality
      */
-    private function imageGenerate(int $width, array $quality)
+    private function imageGenerate(int $width, array $quality): void
     {
         $fileX = imagesx($this->file);
         $fileY = imagesy($this->file);
@@ -89,14 +89,14 @@ class Image extends Uploader
         if ($image['type'] == "image/jpeg") {
             $this->file = imagecreatefromjpeg($image['tmp_name']);
             $this->ext = "jpg";
-            $this->jpegRotate($image);
-
+            $this->checkAngle($image);
             return true;
         }
 
         if ($image['type'] == "image/png") {
             $this->file = imagecreatefrompng($image['tmp_name']);
             $this->ext = "png";
+            $this->checkAngle($image);
             return true;
         }
 
@@ -108,35 +108,27 @@ class Image extends Uploader
         return false;
     }
 
-
     /**
-     * Image rotation when needed
-     * Detects EXIF metadata for rotated images and convert them to keep the defined rotation
-     *
-     * @param array $image
-     * @return bool
+     * Check image (JPG, PNG) angle and rotate from exif data.
+     * @param $image
      */
-    protected function jpegRotate($image)
+    private function checkAngle($image): void
     {
-        $exif = exif_read_data($image['tmp_name']);
-        if (!empty($exif['Orientation'])) {
-            $angle = 0;
-            switch ($exif['Orientation']) {
-                case 3:
-                    $angle = 180;
-                    break;
-                case 6:
-                    $angle = -90;
-                    break;
-                case 8:
-                    $angle = 90;
-                    break;
-            }
-            $this->file = imagerotate($this->file, $angle, 0);
-            return true;
-        } else {
-            throw new \Exception("Failed reading JPEG EXIF Data!");
-        }
-    }
+        $exif = exif_read_data($image["tmp_name"]);
+        $orientation = (!empty($exif["Orientation"]) ? $exif["Orientation"] : null);
 
+        switch ($orientation) {
+            case 8:
+                $this->file = imagerotate($this->file, 90, 0);
+                break;
+            case 3:
+                $this->file = imagerotate($this->file, 180, 0);
+                break;
+            case 6:
+                $this->file = imagerotate($this->file, -90, 0);
+                break;
+        }
+
+        return;
+    }
 }
