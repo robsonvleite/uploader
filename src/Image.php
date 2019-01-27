@@ -114,7 +114,7 @@ class Image extends Uploader
      */
     private function checkAngle($image): void
     {
-        $exif = exif_read_data($image["tmp_name"]);
+        $exif = @exif_read_data($image["tmp_name"]);
         $orientation = (!empty($exif["Orientation"]) ? $exif["Orientation"] : null);
 
         switch ($orientation) {
