@@ -35,7 +35,7 @@ class Image extends Uploader
         }
 
         if (!$this->imageCreate($image)) {
-            throw new \Exception("{$image['type']} - Not a valid image type");
+            throw new \Exception("Not a valid image type or extension");
         } else {
             $this->name($name);
         }
@@ -47,6 +47,37 @@ class Image extends Uploader
 
         $this->imageGenerate($width, ($quality ?? ["jpg" => 75, "png" => 5]));
         return "{$this->path}/{$this->name}";
+    }
+
+    /**
+     * Image create and valid extension from mime-type
+     * https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#Image_types
+     *
+     * @param array $image
+     * @return bool
+     */
+    protected function imageCreate(array $image): bool
+    {
+        if ($image['type'] == "image/jpeg") {
+            $this->file = imagecreatefromjpeg($image['tmp_name']);
+            $this->ext = "jpg";
+            $this->checkAngle($image);
+            return true;
+        }
+
+        if ($image['type'] == "image/png") {
+            $this->file = imagecreatefrompng($image['tmp_name']);
+            $this->ext = "png";
+            $this->checkAngle($image);
+            return true;
+        }
+
+        if ($image['type'] == "image/gif") {
+            $this->ext = "gif";
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -75,37 +106,6 @@ class Image extends Uploader
 
         imagedestroy($this->file);
         imagedestroy($imageCreate);
-    }
-
-    /**
-     * Image create from mime-type
-     * https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#Image_types
-     *
-     * @param array $image
-     * @return bool
-     */
-    protected function imageCreate(array $image): bool
-    {
-        if ($image['type'] == "image/jpeg") {
-            $this->file = imagecreatefromjpeg($image['tmp_name']);
-            $this->ext = "jpg";
-            $this->checkAngle($image);
-            return true;
-        }
-
-        if ($image['type'] == "image/png") {
-            $this->file = imagecreatefrompng($image['tmp_name']);
-            $this->ext = "png";
-            $this->checkAngle($image);
-            return true;
-        }
-
-        if ($image['type'] == "image/gif") {
-            $this->ext = "gif";
-            return true;
-        }
-
-        return false;
     }
 
     /**

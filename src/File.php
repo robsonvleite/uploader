@@ -13,6 +13,7 @@ class File extends Uploader
     /**
      * Allow zip, rar, bzip, pdf, doc, docx files
      * @var array allowed file types
+     * https://www.freeformatter.com/mime-types-list.html
      */
     protected static $allowTypes = [
         "application/zip",
@@ -24,6 +25,19 @@ class File extends Uploader
     ];
 
     /**
+     * Allowed extensions to types.
+     * @var array
+     */
+    protected static $extensions = [
+        "zip",
+        "rar",
+        "bz",
+        "pdf",
+        "doc",
+        "docx"
+    ];
+
+    /**
      * @param array $file
      * @param string $name
      * @return null|string
@@ -31,13 +45,13 @@ class File extends Uploader
      */
     public function upload(array $file, string $name): string
     {
-        if (!in_array($file['type'], static::$allowTypes)) {
-            throw new \Exception("{$file['type']} - Not a valid file type");
-        } else {
-            $this->ext = mb_strtolower(pathinfo($file['name'])['extension']);
-            $this->name($name);
+        $this->ext = mb_strtolower(pathinfo($file['name'])['extension']);
+
+        if (!in_array($file['type'], static::$allowTypes) || !in_array($this->ext, static::$extensions)) {
+            throw new \Exception("Not a valid file type or extension");
         }
 
+        $this->name($name);
         move_uploaded_file($file['tmp_name'], "{$this->path}/{$this->name}");
         return "{$this->path}/{$this->name}";
     }

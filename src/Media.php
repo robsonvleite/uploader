@@ -13,10 +13,20 @@ class Media extends Uploader
     /**
      * Allow mp4 video and mp3 audio
      * @var array allowed media types
+     * https://www.freeformatter.com/mime-types-list.html
      */
     protected static $allowTypes = [
         "audio/mp3",
         "video/mp4",
+    ];
+
+    /**
+     * Allowed extensions to types.
+     * @var array
+     */
+    protected static $extensions = [
+        "mp3",
+        "mp4"
     ];
 
     /**
@@ -27,13 +37,13 @@ class Media extends Uploader
      */
     public function upload(array $media, string $name): string
     {
-        if (!in_array($media['type'], static::$allowTypes)) {
-            throw new \Exception("{$media['type']} - Not a valid media type");
-        } else {
-            $this->ext = mb_strtolower(pathinfo($media['name'])['extension']);
-            $this->name($name);
+        $this->ext = mb_strtolower(pathinfo($media['name'])['extension']);
+
+        if (!in_array($media['type'], static::$allowTypes) || !in_array($this->ext, static::$extensions)) {
+            throw new \Exception("Not a valid media type or extension");
         }
 
+        $this->name($name);
         move_uploaded_file($media['tmp_name'], "{$this->path}/{$this->name}");
         return "{$this->path}/{$this->name}";
     }

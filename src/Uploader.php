@@ -25,6 +25,9 @@ abstract class Uploader
     /** @var array */
     protected static $allowTypes = [];
 
+    /** @var array */
+    protected static $extensions = [];
+
     /**
      * @param string $uploadDir
      * @param string $fileTypeDir
@@ -43,6 +46,14 @@ abstract class Uploader
     public static function isAllowed(): array
     {
         return static::$allowTypes;
+    }
+
+    /**
+     * @return array
+     */
+    public static function isExtension(): array
+    {
+        return static::$extensions;
     }
 
     /**
