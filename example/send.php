@@ -8,7 +8,7 @@
 
         $postscript = new CoffeeCode\Uploader\Send("uploads", "postscript", [
             "application/postscript"
-        ]);
+        ], ["ai"]);
 
         if ($_FILES) {
             try {
