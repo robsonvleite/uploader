@@ -17,6 +17,7 @@ class Media extends Uploader
      */
     protected static $allowTypes = [
         "audio/mp3",
+        "audio/mpeg",
         "video/mp4",
     ];
 
