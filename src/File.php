@@ -17,8 +17,10 @@ class File extends Uploader
      */
     protected static $allowTypes = [
         "application/zip",
-        'application/x-rar-compressed',
-        'application/x-bzip',
+        "application/x-zip-compressed",
+        "application/x-rar-compressed",
+        "application/octet-stream",
+        "application/x-bzip",
         "application/pdf",
         "application/msword",
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
