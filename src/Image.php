@@ -68,7 +68,6 @@ class Image extends Uploader
         if ($image['type'] == "image/png") {
             $this->file = imagecreatefrompng($image['tmp_name']);
             $this->ext = "png";
-            $this->checkAngle($image);
             return true;
         }
 
