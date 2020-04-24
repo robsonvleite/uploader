@@ -83,7 +83,7 @@ abstract class Uploader
     protected function dir(string $dir, int $mode = 0755): void
     {
         if (!file_exists($dir) || !is_dir($dir)) {
-            mkdir($dir, $mode);
+            mkdir($dir, $mode, true);
         }
     }
 
