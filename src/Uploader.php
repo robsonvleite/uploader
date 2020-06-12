@@ -98,4 +98,24 @@ abstract class Uploader
         $this->dir("{$path}/{$yearPath}/{$mothPath}");
         $this->path = "{$path}/{$yearPath}/{$mothPath}";
     }
+
+    /**
+     * @param $inputName
+     * @param $files
+     * @return array
+     */
+    public function multiple($inputName, $files): array
+    {
+        $gbFiles = [];
+        $gbCount = count($files[$inputName]["name"]);
+        $gbKeys = array_keys($files[$inputName]);
+
+        for ($gbLoop = 0; $gbLoop < $gbCount; $gbLoop++):
+            foreach ($gbKeys as $key):
+                $gbFiles[$gbLoop][$key] = $files[$inputName][$key][$gbLoop];
+            endforeach;
+        endfor;
+
+        return $gbFiles;
+    }
 }
