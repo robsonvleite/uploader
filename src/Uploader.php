@@ -31,13 +31,18 @@ abstract class Uploader
     /**
      * @param string $uploadDir
      * @param string $fileTypeDir
+     * @param bool $monthYearPath
      * @example $u = new Upload("storage/uploads", "images");
      */
-    public function __construct(string $uploadDir, string $fileTypeDir)
+    public function __construct(string $uploadDir, string $fileTypeDir, bool $monthYearPath = true)
     {
         $this->dir($uploadDir);
         $this->dir("{$uploadDir}/{$fileTypeDir}");
-        $this->path("{$uploadDir}/{$fileTypeDir}");
+        $this->path = "{$uploadDir}/{$fileTypeDir}";
+
+        if ($monthYearPath) {
+            $this->path("{$uploadDir}/{$fileTypeDir}");
+        }
     }
 
     /**

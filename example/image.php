@@ -6,8 +6,9 @@
         require __DIR__ . "/../src/Uploader.php";
         require __DIR__ . "/../src/Image.php";
 
+        //$image = new CoffeeCode\Uploader\Image("uploads", "images", false); //SEM PASTAS DE ANO E MÊS
         $image = new CoffeeCode\Uploader\Image("uploads", "images");
-        
+
         if ($_FILES) {
             try {
                 $upload = $image->upload($_FILES['image'], $_POST['name']);

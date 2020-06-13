@@ -6,6 +6,10 @@
         require __DIR__ . "/../src/Uploader.php";
         require __DIR__ . "/../src/Send.php";
 
+        //$postscript = new CoffeeCode\Uploader\Send("uploads", "postscript", [
+        //    "application/postscript"
+        //], ["ai"], false); //SEM PASTAS DE ANO E MÊS
+
         $postscript = new CoffeeCode\Uploader\Send("uploads", "postscript", [
             "application/postscript"
         ], ["ai"]);

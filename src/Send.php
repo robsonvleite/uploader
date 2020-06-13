@@ -17,11 +17,17 @@ class Send extends Uploader
      * @param string $fileTypeDir
      * @param array $allowTypes
      * @param array $extensions
+     * @param bool $monthYearPath
      * https://www.freeformatter.com/mime-types-list.html
      */
-    public function __construct(string $uploadDir, string $fileTypeDir, array $allowTypes, array $extensions)
-    {
-        parent::__construct($uploadDir, $fileTypeDir);
+    public function __construct(
+        string $uploadDir,
+        string $fileTypeDir,
+        array $allowTypes,
+        array $extensions,
+        bool $monthYearPath = true
+    ) {
+        parent::__construct($uploadDir, $fileTypeDir, $monthYearPath);
         self::$allowTypes = $allowTypes;
         self::$extensions = $extensions;
     }

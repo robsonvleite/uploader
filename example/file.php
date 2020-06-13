@@ -6,7 +6,9 @@
         require __DIR__ . "/../src/Uploader.php";
         require __DIR__ . "/../src/File.php";
 
+        //$file = new CoffeeCode\Uploader\File("uploads", "files", false); //SEM PASTAS DE ANO E MÊS
         $file = new CoffeeCode\Uploader\File("uploads", "files");
+
 
         if ($_FILES) {
             try {
