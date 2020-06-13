@@ -120,6 +120,23 @@ if ($_FILES) {
 }
 ```
 
+#### Upload multiple
+
+```php
+require __DIR__ . "/../vendor/autoload.php";
+
+$image = new CoffeeCode\Uploader\Image("uploads", "images");
+
+try {
+    foreach ($image->multiple("file", $_FILES) as $file) {
+        $image->upload($file, "image-" . $file["name"], 1200);
+    }
+    echo "Success!";
+} catch (Exception $exception) {
+    echo "<p>(!) {$e->getMessage()}</p>";
+}
+```
+
 ## Contributing
 
 Please see [CONTRIBUTING](https://github.com/robsonvleite/uploader/blob/master/CONTRIBUTING.md) for details.
