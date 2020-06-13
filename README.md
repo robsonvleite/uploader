@@ -120,7 +120,7 @@ if ($_FILES) {
 }
 ```
 
-#### Upload multiple
+#### Upload Multiple
 
 ```php
 require __DIR__ . "/../vendor/autoload.php";
