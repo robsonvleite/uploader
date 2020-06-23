@@ -33,7 +33,7 @@ CoffeeCode é um conjunto de pequenos e otimizados componentes PHP para tarefas 
 Uploader is available via Composer:
 
 ```bash
-"coffeecode/uploader": "^1.0.*"
+"coffeecode/uploader": "1.0.*"
 ```
 
 or run
