@@ -132,7 +132,7 @@ try {
         $image->upload($file, "image-" . $file["name"], 1200);
     }
     echo "Success!";
-} catch (Exception $exception) {
+} catch (Exception $e) {
     echo "<p>(!) {$e->getMessage()}</p>";
 }
 ```
