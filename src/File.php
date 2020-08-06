@@ -11,7 +11,7 @@ namespace CoffeeCode\Uploader;
 class File extends Uploader
 {
     /**
-     * Allow zip, rar, bzip, pdf, doc, docx files
+     * Allow zip, rar, bzip, pdf, doc, docx, csv, xls, xlsx, ods, odt files
      * @var array allowed file types
      * https://www.freeformatter.com/mime-types-list.html
      */
@@ -22,6 +22,11 @@ class File extends Uploader
         "application/pdf",
         "application/msword",
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        "text/csv",
+        "application/vnd.ms-excel",
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "application/vnd.oasis.opendocument.spreadsheet",
+        "application/vnd.oasis.opendocument.text",
     ];
 
     /**
@@ -34,7 +39,12 @@ class File extends Uploader
         "bz",
         "pdf",
         "doc",
-        "docx"
+        "docx",
+        "csv",
+        "xls",
+        "xlsx",
+        "ods",
+        "odt"
     ];
 
     /**
