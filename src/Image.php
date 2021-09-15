@@ -60,6 +60,11 @@ class Image extends Uploader
     {
         if ($image['type'] == "image/jpeg") {
             $this->file = imagecreatefromjpeg($image['tmp_name']);
+
+            if (!$this->file) {
+                $this->file = imagecreatefromstring(file_get_contents($image['tmp_name']));
+            }
+
             $this->ext = "jpg";
             $this->checkAngle($image);
             return true;
@@ -67,6 +72,11 @@ class Image extends Uploader
 
         if ($image['type'] == "image/png") {
             $this->file = imagecreatefrompng($image['tmp_name']);
+
+            if (!$this->file) {
+                $this->file = imagecreatefromstring(file_get_contents($image['tmp_name']));
+            }
+
             $this->ext = "png";
             return true;
         }
