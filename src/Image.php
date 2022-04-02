@@ -2,6 +2,8 @@
 
 namespace CoffeeCode\Uploader;
 
+use Exception;
+
 /**
  * Class CoffeeCode Image
  *
@@ -14,7 +16,7 @@ class Image extends Uploader
      * Allow jpg, png and gif images, use from check. For new extensions check the imageCrete method
      * @var array allowed media types
      */
-    protected static $allowTypes = [
+    protected static array $allowTypes = [
         "image/jpeg",
         "image/png",
         "image/gif",
@@ -26,19 +28,19 @@ class Image extends Uploader
      * @param int $width
      * @param array|null $quality
      * @return string
-     * @throws \Exception
+     * @throws Exception
      */
     public function upload(array $image, string $name, int $width = 2000, ?array $quality = null): string
     {
         if (empty($image['type'])) {
-            throw new \Exception("Not a valid data from image");
+            throw new Exception("Not a valid data from image");
         }
 
         if (!$this->imageCreate($image)) {
-            throw new \Exception("Not a valid image type or extension");
-        } else {
-            $this->name($name);
+            throw new Exception("Not a valid image type or extension");
         }
+
+        $this->name($name);
 
         if ($this->ext == "gif") {
             move_uploaded_file("{$image['tmp_name']}", "{$this->path}/{$this->name}");
@@ -61,7 +63,6 @@ class Image extends Uploader
         if ($image['type'] == "image/jpeg") {
             $this->file = imagecreatefromjpeg($image['tmp_name']);
             $this->ext = "jpg";
-            $this->checkAngle($image);
             return true;
         }
 
@@ -85,10 +86,10 @@ class Image extends Uploader
      */
     private function imageGenerate(int $width, array $quality): void
     {
-        $fileX = imagesx($this->file);
-        $fileY = imagesy($this->file);
-        $imageW = ($width < $fileX ? $width : $fileX);
-        $imageH = ($imageW * $fileY) / $fileX;
+        $fileX = intval(imagesx($this->file));
+        $fileY = intval(imagesy($this->file));
+        $imageW = ($width < $fileX ? (int)$width : (int)$fileX);
+        $imageH = intval(($imageW * $fileY) / $fileX);
         $imageCreate = imagecreatetruecolor($imageW, $imageH);
 
         if ($this->ext == "jpg") {
@@ -105,29 +106,5 @@ class Image extends Uploader
 
         imagedestroy($this->file);
         imagedestroy($imageCreate);
-    }
-
-    /**
-     * Check image (JPG, PNG) angle and rotate from exif data.
-     * @param $image
-     */
-    private function checkAngle($image): void
-    {
-        $exif = @exif_read_data($image["tmp_name"]);
-        $orientation = (!empty($exif["Orientation"]) ? $exif["Orientation"] : null);
-
-        switch ($orientation) {
-            case 8:
-                $this->file = imagerotate($this->file, 90, 0);
-                break;
-            case 3:
-                $this->file = imagerotate($this->file, 180, 0);
-                break;
-            case 6:
-                $this->file = imagerotate($this->file, -90, 0);
-                break;
-        }
-
-        return;
     }
 }

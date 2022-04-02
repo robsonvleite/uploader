@@ -11,22 +11,22 @@ namespace CoffeeCode\Uploader;
 abstract class Uploader
 {
     /** @var string */
-    protected $path;
+    protected string $path;
 
     /** @var resource */
     protected $file;
 
     /** @var string */
-    protected $name;
+    protected string $name;
 
     /** @var string */
-    protected $ext;
+    protected string $ext;
 
     /** @var array */
-    protected static $allowTypes = [];
+    protected static array $allowTypes = [];
 
     /** @var array */
-    protected static $extensions = [];
+    protected static array $extensions = [];
 
     /**
      * @param string $uploadDir
@@ -67,11 +67,14 @@ abstract class Uploader
      */
     protected function name(string $name): string
     {
-        $name = filter_var(mb_strtolower($name), FILTER_SANITIZE_STRIPPED);
+        $name = filter_var(mb_strtolower($name), FILTER_UNSAFE_RAW);
         $formats = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜüÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿRr"!@#$%&*()_-+={[}]/?;:.,\\\'<>°ºª';
         $replace = 'aaaaaaaceeeeiiiidnoooooouuuuuybsaaaaaaaceeeeiiiidnoooooouuuyybyRr                                 ';
-        $name = str_replace(["-----", "----", "---", "--"], "-",
-            str_replace(" ", "-", trim(strtr(utf8_decode($name), utf8_decode($formats), $replace))));
+        $name = str_replace(
+            ["-----", "----", "---", "--"],
+            "-",
+            str_replace(" ", "-", trim(strtr(utf8_decode($name), utf8_decode($formats), $replace)))
+        );
 
         $this->name = "{$name}." . $this->ext;
 
@@ -102,6 +105,14 @@ abstract class Uploader
         $this->dir("{$path}/{$yearPath}");
         $this->dir("{$path}/{$yearPath}/{$mothPath}");
         $this->path = "{$path}/{$yearPath}/{$mothPath}";
+    }
+
+    /**
+     * @param array $file
+     */
+    protected function ext(array $file): void
+    {
+        $this->ext = mb_strtolower(pathinfo($file['name'])['extension']);
     }
 
     /**
