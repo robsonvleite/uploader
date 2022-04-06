@@ -15,7 +15,7 @@
                 $upload = $file->upload($_FILES['file'], $_POST['name']);
                 echo "<p><a href='$upload' target='_blank'>@CoffeeCode</a></p>";
             } catch (Exception $e) {
-                echo "<p>(!) {$e->getMessage()}</p>";
+                echo "<p>(!) $e->getMessage()</p>";
             }
         }
         ?>

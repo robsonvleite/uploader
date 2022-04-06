@@ -14,7 +14,7 @@
                 $upload = $image->upload($_FILES['image'], $_POST['name']);
                 echo "<img alt='' src='$upload' width='100%'>";
             } catch (Exception $e) {
-                echo "<p>(!) {$e->getMessage()}</p>";
+                echo "<p>(!) $e->getMessage()</p>";
             }
         }
         ?>

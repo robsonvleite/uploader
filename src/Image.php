@@ -43,7 +43,7 @@ class Image extends Uploader
         $this->name($name);
 
         if ($this->ext == "gif") {
-            move_uploaded_file("{$image['tmp_name']}", "$this->path/$this->name");
+            move_uploaded_file($image['tmp_name'], "$this->path/$this->name");
             return "$this->path/$this->name";
         }
 

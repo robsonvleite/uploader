@@ -64,7 +64,7 @@ if ($_FILES) {
         $upload = $image->upload($_FILES['image'], $_POST['name']);
         echo "<img src='$upload' width='100%'>";
     } catch (Exception $e) {
-        echo "<p>(!) {$e->getMessage()}</p>";
+        echo "<p>(!) $e->getMessage()</p>";
     }
 }
 ```
@@ -81,7 +81,7 @@ if ($_FILES) {
         $upload = $file->upload($_FILES['file'], $_POST['name']);
         echo "<p><a href='$upload' target='_blank'>@CoffeeCode</a></p>";
     } catch (Exception $e) {
-        echo "<p>(!) {$e->getMessage()}</p>";
+        echo "<p>(!) $e->getMessage()</p>";
     }
 }
 ```
@@ -98,7 +98,7 @@ if ($_FILES) {
         $upload = $media->upload($_FILES['file'], $_POST['name']);
         echo "<p><a href='$upload' target='_blank'>@CoffeeCode</a></p>";
     } catch (Exception $e) {
-        echo "<p>(!) {$e->getMessage()}</p>";
+        echo "<p>(!) $e->getMessage()</p>";
     }
 }
 ```
@@ -115,7 +115,7 @@ if ($_FILES) {
         $upload = $postscript->upload($_FILES['file'], $_POST['name']);
         echo "<p><a href='$upload' target='_blank'>@CoffeeCode</a></p>";
     } catch (Exception $e) {
-        echo "<p>(!) {$e->getMessage()}</p>";
+        echo "<p>(!) $e->getMessage()</p>";
     }
 }
 ```
@@ -132,7 +132,7 @@ try {
     }
     echo "Success!";
 } catch (Exception $e) {
-    echo "<p>(!) {$e->getMessage()}</p>";
+    echo "<p>(!) $e->getMessage()</p>";
 }
 ```
 
