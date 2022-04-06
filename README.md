@@ -11,13 +11,16 @@
 
 ###### Uploader is a set of small classes for sending images, files, and media received by a form of your application. The Uploader handles, validates and sends the files to your server. Image class can still handle sizes with the gd library.
 
-Uploader é um conjunto de pequenas classes para envio de imagens, arquivos e midias recebidos por um formulário de sua aplicação. O Uploader trata, valida e envia os arquivos a seu servidor. A classe de imagem ainda consegue tratar tamanhos com a biblioteca gd.
+Uploader é um conjunto de pequenas classes para envio de imagens, arquivos e midias recebidos por um formulário da sua
+aplicação. O Uploader trata, valida e envia os arquivos a seu servidor. A classe de imagem ainda consegue tratar
+tamanhos com a biblioteca gd.
 
 ## About CoffeeCode
 
-###### CoffeeCode is a set of small and optimized PHP components for common tasks. Held by Robson V. Leite and the UpInside team. With them you perform routine tasks with fewer lines, writing less and doing much more.
+###### CoffeeCode is a set of small and optimized PHP components for common tasks. Held by Robson V. Leite, and the UpInside team. With them, you perform routine tasks with fewer lines, writing less and doing much more.
 
-CoffeeCode é um conjunto de pequenos e otimizados componentes PHP para tarefas comuns. Mantido por Robson V. Leite e a equipe UpInside. Com eles você executa tarefas rotineiras com poucas linhas, escrevendo menos e fazendo muito mais.
+CoffeeCode é um conjunto de pequenos e otimizados componentes PHP para tarefas comuns. Mantido por Robson V. Leite e a
+equipe UpInside. Com eles você executa tarefas rotineiras com poucas linhas, escrevendo menos e fazendo muito mais.
 
 ### Highlights
 
@@ -46,20 +49,20 @@ composer require coffeecode/uploader
 
 ###### For details on how to use the upload, see a sample folder in the component directory. In it you will have an example of use for each class. CoffeeCode Uploader works like this:
 
-Para mais detalhes sobre como usar o upload, veja uma pasta de exemplo no diretório do componente. Nela terá um exemplo de uso para cada classe. CoffeeCode Uploader funciona assim:
+Para mais detalhes sobre como usar o upload, veja uma pasta de exemplo no diretório do componente. Nela terá um exemplo
+de uso para cada classe. CoffeeCode Uploader funciona assim:
 
 #### Upload an Image
 
 ```php
 <?php
-require __DIR__ . "/../vendor/autoload.php";
 
 $image = new CoffeeCode\Uploader\Image("uploads", "images", 600);
 
 if ($_FILES) {
     try {
         $upload = $image->upload($_FILES['image'], $_POST['name']);
-        echo "<img src='{$upload}' width='100%'>";
+        echo "<img src='$upload' width='100%'>";
     } catch (Exception $e) {
         echo "<p>(!) {$e->getMessage()}</p>";
     }
@@ -70,14 +73,13 @@ if ($_FILES) {
 
 ```php
 <?php
-require __DIR__ . "/../vendor/autoload.php";
 
 $file = new CoffeeCode\Uploader\File("uploads", "files");
 
 if ($_FILES) {
     try {
         $upload = $file->upload($_FILES['file'], $_POST['name']);
-        echo "<p><a href='{$upload}' target='_blank'>@CoffeeCode</a></p>";
+        echo "<p><a href='$upload' target='_blank'>@CoffeeCode</a></p>";
     } catch (Exception $e) {
         echo "<p>(!) {$e->getMessage()}</p>";
     }
@@ -88,14 +90,13 @@ if ($_FILES) {
 
 ```php
 <?php
-require __DIR__ . "/../vendor/autoload.php";
 
 $media = new CoffeeCode\Uploader\Media("uploads", "medias");
 
 if ($_FILES) {
     try {
         $upload = $media->upload($_FILES['file'], $_POST['name']);
-        echo "<p><a href='{$upload}' target='_blank'>@CoffeeCode</a></p>";
+        echo "<p><a href='$upload' target='_blank'>@CoffeeCode</a></p>";
     } catch (Exception $e) {
         echo "<p>(!) {$e->getMessage()}</p>";
     }
@@ -106,14 +107,13 @@ if ($_FILES) {
 
 ```php
 <?php
-require __DIR__ . "/../vendor/autoload.php";
 
-$postscript = new CoffeeCode\Uploader\Send("uploads", "postscript", ["application/postscript"]);
+$postscript = new CoffeeCode\Uploader\Send("uploads", "postscript", ["application/postscript"], ["ai"]);
 
 if ($_FILES) {
     try {
         $upload = $postscript->upload($_FILES['file'], $_POST['name']);
-        echo "<p><a href='{$upload}' target='_blank'>@CoffeeCode</a></p>";
+        echo "<p><a href='$upload' target='_blank'>@CoffeeCode</a></p>";
     } catch (Exception $e) {
         echo "<p>(!) {$e->getMessage()}</p>";
     }
@@ -123,7 +123,6 @@ if ($_FILES) {
 #### Upload Multiple
 
 ```php
-require __DIR__ . "/../vendor/autoload.php";
 
 $image = new CoffeeCode\Uploader\Image("uploads", "images");
 
@@ -145,7 +144,8 @@ Please see [CONTRIBUTING](https://github.com/robsonvleite/uploader/blob/master/C
 
 ###### Security: If you discover any security related issues, please email cursos@upinside.com.br instead of using the issue tracker.
 
-Se você descobrir algum problema relacionado à segurança, envie um e-mail para cursos@upinside.com.br em vez de usar o rastreador de problemas.
+Se você descobrir algum problema relacionado à segurança, envie um e-mail para cursos@upinside.com.br em vez de usar o
+rastreador de problemas.
 
 Thank you
 
@@ -157,4 +157,5 @@ Thank you
 
 ## License
 
-The MIT License (MIT). Please see [License File](https://github.com/robsonvleite/uploader/blob/master/LICENSE) for more information.
+The MIT License (MIT). Please see [License File](https://github.com/robsonvleite/uploader/blob/master/LICENSE) for more
+information.
