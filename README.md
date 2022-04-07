@@ -139,8 +139,6 @@ try {
 
 ## Contributing
 
-![GitHub Contributors Image](https://contrib.rocks/image?repo=robsonvleite/uploader)
-
 Please see [CONTRIBUTING](https://github.com/robsonvleite/uploader/blob/master/CONTRIBUTING.md) for details.
 
 ## Support
