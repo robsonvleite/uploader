@@ -12,15 +12,13 @@
         if ($_FILES) {
             try {
                 $upload = $image->upload($_FILES['image'], $_POST['name']);
-                echo "<img alt='' src='$upload' width='100%'>";
+                echo "<img src='{$upload}' width='100%'>";
             } catch (Exception $e) {
-                echo "<p>(!) $e->getMessage()</p>";
+                echo "<p>(!) {$e->getMessage()}</p>";
             }
         }
         ?>
-        <label>
-            <input type="text" name="name" placeholder="Image Name" required/>
-        </label>
+        <input type="text" name="name" placeholder="Image Name" required/>
         <input type="file" name="image" required/>
         <button>Send Image</button>
     </form>

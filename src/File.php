@@ -64,7 +64,7 @@ class File extends Uploader
         }
 
         $this->name($name);
-        move_uploaded_file($file['tmp_name'], "$this->path/$this->name");
-        return "$this->path/$this->name";
+        move_uploaded_file($file['tmp_name'], "{$this->path}/{$this->name}");
+        return "{$this->path}/{$this->name}";
     }
 }

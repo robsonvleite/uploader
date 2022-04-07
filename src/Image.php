@@ -43,12 +43,12 @@ class Image extends Uploader
         $this->name($name);
 
         if ($this->ext == "gif") {
-            move_uploaded_file($image['tmp_name'], "$this->path/$this->name");
-            return "$this->path/$this->name";
+            move_uploaded_file("{$image['tmp_name']}", "{$this->path}/{$this->name}");
+            return "{$this->path}/{$this->name}";
         }
 
         $this->imageGenerate($width, ($quality ?? ["jpg" => 75, "png" => 5]));
-        return "$this->path/$this->name";
+        return "{$this->path}/{$this->name}";
     }
 
     /**
@@ -94,14 +94,14 @@ class Image extends Uploader
 
         if ($this->ext == "jpg") {
             imagecopyresampled($imageCreate, $this->file, 0, 0, 0, 0, $imageW, $imageH, $fileX, $fileY);
-            imagejpeg($imageCreate, "$this->path/$this->name", $quality['jpg']);
+            imagejpeg($imageCreate, "{$this->path}/{$this->name}", $quality['jpg']);
         }
 
         if ($this->ext == "png") {
             imagealphablending($imageCreate, false);
             imagesavealpha($imageCreate, true);
             imagecopyresampled($imageCreate, $this->file, 0, 0, 0, 0, $imageW, $imageH, $fileX, $fileY);
-            imagepng($imageCreate, "$this->path/$this->name", $quality['png']);
+            imagepng($imageCreate, "{$this->path}/{$this->name}", $quality['png']);
         }
 
         imagedestroy($this->file);

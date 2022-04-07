@@ -37,11 +37,11 @@ abstract class Uploader
     public function __construct(string $uploadDir, string $fileTypeDir, bool $monthYearPath = true)
     {
         $this->dir($uploadDir);
-        $this->dir("$uploadDir/$fileTypeDir");
-        $this->path = "$uploadDir/$fileTypeDir";
+        $this->dir("{$uploadDir}/{$fileTypeDir}");
+        $this->path = "{$uploadDir}/{$fileTypeDir}";
 
         if ($monthYearPath) {
-            $this->path("$uploadDir/$fileTypeDir");
+            $this->path("{$uploadDir}/{$fileTypeDir}");
         }
     }
 
@@ -76,10 +76,10 @@ abstract class Uploader
             str_replace(" ", "-", trim(strtr(utf8_decode($name), utf8_decode($formats), $replace)))
         );
 
-        $this->name = "$name." . $this->ext;
+        $this->name = "{$name}." . $this->ext;
 
-        if (file_exists("$this->path/$this->name") && is_file("$this->path/$this->name")) {
-            $this->name = "$name-" . time() . ".$this->ext";
+        if (file_exists("{$this->path}/{$this->name}") && is_file("{$this->path}/{$this->name}")) {
+            $this->name = "{$name}-" . time() . ".{$this->ext}";
         }
         return $this->name;
     }
@@ -102,9 +102,9 @@ abstract class Uploader
     {
         list($yearPath, $mothPath) = explode("/", date("Y/m"));
 
-        $this->dir("$path/$yearPath");
-        $this->dir("$path/$yearPath/$mothPath");
-        $this->path = "$path/$yearPath/$mothPath";
+        $this->dir("{$path}/{$yearPath}");
+        $this->dir("{$path}/{$yearPath}/{$mothPath}");
+        $this->path = "{$path}/{$yearPath}/{$mothPath}";
     }
 
     /**
