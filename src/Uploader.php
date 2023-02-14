@@ -67,13 +67,17 @@ abstract class Uploader
      */
     protected function name(string $name): string
     {
-        $name = filter_var(mb_strtolower($name), FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $formats = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜüÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿRr"!@#$%&*()_-+={[}]/?;:.,\\\'<>°ºª';
+        $name = mb_convert_encoding(htmlspecialchars(mb_strtolower($name)), 'ISO-8859-1', 'UTF-8');
+        $formats = mb_convert_encoding(
+            'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜüÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿRr"!@#$%&*()_-+={[}]/?;:.,\\\'<>°ºª',
+            'ISO-8859-1',
+            'UTF-8'
+        );
         $replace = 'aaaaaaaceeeeiiiidnoooooouuuuuybsaaaaaaaceeeeiiiidnoooooouuuyybyrr                                 ';
         $name = str_replace(
             ["-----", "----", "---", "--"],
             "-",
-            str_replace(" ", "-", trim(strtr(utf8_decode($name), utf8_decode($formats), $replace)))
+            str_replace(" ", "-", trim(strtr($name, $formats, $replace)))
         );
 
         $this->name = "{$name}." . $this->ext;
