@@ -116,11 +116,11 @@ abstract class Uploader
      */
     protected function ext(array $file): void
     {
-        $info =  pathinfo($file['name']);
-        if(!empty($info['extension'])){
-            $this->ext = $info['extension'];
-        }
+        $info = pathinfo($file['name']);
         $this->ext = '';
+        if (!empty($info['extension'])) {
+            $this->ext = mb_strtolower($info['extension']);
+        }
     }
 
     /**
